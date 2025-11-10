@@ -33,7 +33,93 @@ public class TestPicture17
      Picture ferris1 = new Picture("images/2000 ferris wheel2.jpg");
      Picture ferris2 = new Picture("images/2000 ferris wheel2.jpg");
      Picture ferris3 = new Picture("images/2000 ferris wheel2.jpg");
+     Picture moto = new Picture ("images/redMotorcycle.jpg");
+     
+      Picture pic1 = new Picture("images\\snowman.jpg");
+      Picture pic2 = new Picture("images\\robot.jpg");
+      Picture pic3 = new Picture("images\\snowman.jpg");
+      Picture pic4 = new Picture("images\\caterpillar.jpg");
+         
+      pic1.explore();
+      
+     
+     Pixel[] pixels1;
+     pixels1=pic1.getPixels();
+     int red,blue,green;
+     for (Pixel spot1 : pixels1)
+         {
+          //System.out.println(spot1);
+          
+          red = spot1.getRed();
+          
+          red = (int) (red * 0.5);
+          
+          spot1.setRed(red);
+          
+          blue = spot1.getBlue();
+         green = spot1.getGreen();
+         blue = (int) (blue * 1.5);
+         
+         spot1.setBlue(blue);
+         
+         green = (int)(green * 0.25);
+         spot1.setGreen(green);
+         }
+         pic1.explore(); 
+    
+         pic2.explore();
+     Pixel[] pixels2;
+     pixels2=pic2.getPixels();
 
+     for (Pixel spot1 : pixels2)
+     {
+         red = spot1.getRed();
+          
+          red = (255-red);
+          
+          spot1.setRed(red);
+          
+          blue = spot1.getBlue();
+         green = spot1.getGreen();
+         blue = (255-blue);
+         
+         spot1.setBlue(blue);
+         
+         green = (255-green);
+         spot1.setGreen(green);
+     }
+     pic2.explore();
+     
+     //grayscale
+     
+     pic3.explore();
+     Pixel[] pixels3;
+     pixels3=pic3.getPixels();
+     int avg=0;
+     for (Pixel spot1 : pixels3)
+     {
+         red = spot1.getRed();
+         blue = spot1.getBlue();
+         green = spot1.getGreen();
+         
+         avg = (red+blue+green)/3;
+         
+         spot1.setRed(avg);
+         spot1.setBlue(avg);
+         spot1.setGreen(avg);
+     }
+     pic3.explore();
+     
+     
+ /**    
+     p.maxBlue();
+      p.explore();
+      pic2.negate();
+p.explore();
+p2. adjustRed(10);
+p2.explore();
+p.grayscale();
+p.explore();    
      //apic.explore(); displays picture
      ferris1.explore();
      
@@ -43,6 +129,35 @@ public class TestPicture17
      //gets pixels from picture and assigns to pixels array
      //MUST FOR EVERY PICTURE
      pixels = ferris1.getPixels();
+     
+     Pixel[] mpixels;
+     mpixels=moto.getPixels();
+
+     for (Pixel spot1 : mpixels)
+         {
+          //System.out.println(spot1);
+          
+          red = spot1.getRed();
+          
+          red = (int) (red * 0.25);
+          
+          spot1.setRed(red);
+         }
+         moto.explore(); 
+    
+     for (Pixel spot3 : mpixels)
+     {
+         blue = spot3.getBlue();
+         green = spot3.getGreen();
+         blue = (int) (blue * Math.random());
+         
+         spot3.setBlue(blue);
+         
+         green = (int)(green * Math.random());
+         spot3.setGreen(green);
+     }
+         moto.explore();
+        /**
     
      //how many pixels or how large array
     System.out.println("This is a large array"+pixels.length  );
@@ -50,7 +165,7 @@ public class TestPicture17
     //BLACK=0
     //WHITE=255
 
-    /**/
+    /*
         //access each index
     System.out.println(pixels[17]);
     //access each pixel
@@ -72,7 +187,7 @@ public class TestPicture17
     
     for (int i=0; i<10000; i++)
         {
-            Pixel yuck = ferris1.getPixel((int)(Math.random()*1000), (int)(Math.random()*1000));
+            Pixel yuck = ferris1.getPixel((int)(Math.random()*500), (int)(Math.random()*500));
             yuck.setColor(Color.green);
         }
 /*
