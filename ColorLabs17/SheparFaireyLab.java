@@ -45,6 +45,7 @@ public class SheparFaireyLab
           * custom color palette
           */
 
-         
+        //copy of pic!! rename pic!!
+        //object.write("images/SFtry1");
     }//main       
 }//class

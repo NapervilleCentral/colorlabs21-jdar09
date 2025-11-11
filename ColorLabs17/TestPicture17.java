@@ -36,13 +36,16 @@ public class TestPicture17
      Picture moto = new Picture ("images/redMotorcycle.jpg");
      
       Picture pic1 = new Picture("images\\snowman.jpg");
-      Picture pic2 = new Picture("images\\robot.jpg");
+      Picture pic2 = new Picture("images\\snowman.jpg");
       Picture pic3 = new Picture("images\\snowman.jpg");
-      Picture pic4 = new Picture("images\\caterpillar.jpg");
-         
+      Picture pic4 = new Picture("images\\snowman.jpg");
+      Picture pic5 = new Picture("images\\snowman.jpg");  
+      Picture pic6 = new Picture("images\\snowman.jpg");
+      
+      
       pic1.explore();
       
-     
+     //change color by factor 
      Pixel[] pixels1;
      pixels1=pic1.getPixels();
      int red,blue,green;
@@ -67,7 +70,6 @@ public class TestPicture17
          }
          pic1.explore(); 
     
-         pic2.explore();
      Pixel[] pixels2;
      pixels2=pic2.getPixels();
 
@@ -92,7 +94,6 @@ public class TestPicture17
      
      //grayscale
      
-     pic3.explore();
      Pixel[] pixels3;
      pixels3=pic3.getPixels();
      int avg=0;
@@ -110,7 +111,53 @@ public class TestPicture17
      }
      pic3.explore();
      
+     //darken
+      Pixel[] pixels4;
+     pixels4=pic4.getPixels();
+     for (Pixel spot1 : pixels4)
+     {
+         red = spot1.getRed();
+         blue = spot1.getBlue();
+         green = spot1.getGreen();
+         
+         spot1.setRed((int)(red*0.2));
+         spot1.setBlue((int)(blue*0.2));
+         spot1.setGreen((int)(green*0.2));
+     }
+     pic4.explore();
      
+     //color change
+     Pixel[] pixels5;
+     pixels5=pic5.getPixels();
+     for (Pixel spot1 : pixels5)
+     {
+         red = spot1.getRed();
+         blue = spot1.getBlue();
+         green = spot1.getGreen();
+         
+         spot1.setRed(red-30);
+         spot1.setBlue(blue+100);
+         spot1.setGreen(green-50);
+     }
+     pic5.explore();
+     
+     Pixel [] pixels6;
+     pixels6=pic6.getPixels();
+     
+     for (Pixel spot1 : pixels6)
+     {
+         red = spot1.getRed();
+         blue = spot1.getBlue();
+         green = spot1.getGreen();
+         
+         if (red>=75 && blue==207 && green==123)
+         {
+             spot1.setColor(new Color(255,16,240));
+         }
+         
+         //75,123,207
+     }
+     pic6.explore();
  /**    
      p.maxBlue();
       p.explore();

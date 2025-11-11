@@ -10,3 +10,7 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
+
+1) Person -- feedback
+2) Person -- feedback
+3) Person -- feedback
