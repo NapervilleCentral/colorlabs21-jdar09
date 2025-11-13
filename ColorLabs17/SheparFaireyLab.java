@@ -26,11 +26,11 @@ public class SheparFaireyLab
          */
         
          //relative path
-         Picture apic = new Picture("images\\beach.jpg");
+         Picture apic = new Picture("images\\me.jpg");
          //change with selfie picture
-         Picture me = new Picture("images/beach.jpg");
-         Picture me1 = new Picture("images/beach.jpg");
-         Picture me2 = new Picture("images/beach.jpg");
+         Picture me = new Picture("images/me.jpg");
+         Picture me1 = new Picture("images/me.jpg");
+         Picture me2 = new Picture("images/me.jpg");
          
          Pixel [] pixels1;
          pixels1=me.getPixels();
@@ -126,20 +126,34 @@ public class SheparFaireyLab
          }
          
          int range = max-min;
-         double sections = range/4;
-         
+         double sections = range/5;
+         //darkest to lightest-- blue, terracotta, orange, yellow
+         /**
+          * blue-- 33,164,164
+          * terracotta-- 255,84,52
+          * orange-- 255,191,89
+          * pink-- 223,45,11
+          * yellow-- 255,246,52
+          */
          for (Pixel spot1 : pixels1)
          {
              red = spot1.getRed();
              if (red<(int)sections)
-                spot1.setColor(new Color (0,0,139));
+                spot1.setColor(new Color (33,164,164));
              else if (red>=(int)sections && red<(int)(2*sections))
-                 spot1.setColor(Color.red);
+                 spot1.setColor(new Color (255,84,52));
              else if (red>=(int)(2*sections) && red<(int)(3*sections))
-                 spot1.setColor(new Color (173,216,230));
+                 spot1.setColor(new Color (255,191,89));
              else if (red>=(int)(3*sections) && red<=(int)(4*sections))
-                 spot1.setColor(new Color (245,245,245));
+                 spot1.setColor(new Color (223,45,11));
+             else if (red>=(int)(4*sections) && red<=(int)(5*sections))
+                 spot1.setColor(new Color (255,246,52));
          }
+         me2.explore();
+         me2.write("images/SFREALtry2");
+         
+         //person 1 -- Nithela, increase depth bc your face is blending in
+         //person 2 -- Mr. Hayes, increase yellow's range so more variety is on your face
          /**
           * method 2 change
           * 
