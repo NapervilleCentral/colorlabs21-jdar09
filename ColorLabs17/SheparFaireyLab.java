@@ -129,41 +129,28 @@ public class SheparFaireyLab
          double sections = range/5;
          //darkest to lightest-- blue, terracotta, orange, yellow
          /**
-          * blue-- 33,164,164
+          * blue-- 
           * terracotta-- 255,84,52
           * orange-- 255,191,89
           * pink-- 223,45,11
-          * yellow-- 255,246,52
+          * yellow-- 255,246,52 || 255,240,89
           */
          for (Pixel spot1 : pixels1)
          {
              red = spot1.getRed();
              if (red<(int)sections)
-                spot1.setColor(new Color (33,164,164));
+                spot1.setColor(new Color (204, 36, 87));
              else if (red>=(int)sections && red<(int)(2*sections))
                  spot1.setColor(new Color (255,84,52));
              else if (red>=(int)(2*sections) && red<(int)(3*sections))
                  spot1.setColor(new Color (255,191,89));
-             else if (red>=(int)(3*sections) && red<=(int)(4*sections))
+             else if (red>=(int)(3*sections) && red<=(int)(3.8*sections))
                  spot1.setColor(new Color (223,45,11));
-             else if (red>=(int)(4*sections) && red<=(int)(5*sections))
-                 spot1.setColor(new Color (255,246,52));
+             else if (red>=(int)(3.8*sections) && red<=(int)(5*sections))
+                 spot1.setColor(new Color (255,240,89));
          }
          me2.explore();
-         me2.write("images/SFREALtry2");
+         me2.write("images/SFREALFINAL");
          
-         //person 1 -- Nithela, increase depth bc your face is blending in
-         //person 2 -- Mr. Hayes, increase yellow's range so more variety is on your face
-         /**
-          * method 2 change
-          * 
-          */
-         
-         /**
-          * custom color palette
-          */
-
-        //copy of pic!! rename pic!!
-        //object.write("images/SFtry1");
     }//main       
 }//class
