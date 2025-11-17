@@ -36,7 +36,7 @@ public class SheparFaireyLab
          pixels1=me.getPixels();
          int red, green, blue,avg ;
          
-         /*
+         
          //method 1
          for (Pixel spot1 : pixels1)
          {
@@ -62,14 +62,14 @@ public class SheparFaireyLab
                  spot1.setColor(new Color (245,245,245));
          }
          me.explore();
-         me.write("images/SFtry1");
+         me.write("images/SFmethod1.jpg");
          
          //method 2
          pixels1=me1.getPixels();
-         */
+        /* */
          int prev=0, max=0, min=0;
          //method 2
-         /*
+         
          for (Pixel spot1 : pixels1)
          {
              red = spot1.getRed();
@@ -103,9 +103,9 @@ public class SheparFaireyLab
          }
          
          me1.explore();
-         me.write("images/SFtry2");
+         me.write("images/SFmethod2.jpg");
          
-         */
+         /**/
         
         //method three
         pixels1=me2.getPixels();
@@ -124,12 +124,12 @@ public class SheparFaireyLab
              prev = avg;
              spot1.setColor(new Color (avg,avg,avg));
          }
-         
-         int range = max-min;
-         double sections = range/5;
+           
+          range = max-min;
+          sections = range/5;
          //darkest to lightest-- blue, terracotta, orange, yellow
          /**
-          * blue-- 
+          * red again-- 204, 36, 87
           * terracotta-- 255,84,52
           * orange-- 255,191,89
           * pink-- 223,45,11
@@ -150,7 +150,7 @@ public class SheparFaireyLab
                  spot1.setColor(new Color (255,240,89));
          }
          me2.explore();
-         me2.write("images/SFREALFINAL");
-         
+         me2.write("images/SFREALFINAL.jpg");
+                 
     }//main       
 }//class
