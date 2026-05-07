@@ -24,7 +24,7 @@ public class finalProject
         copytoCanvas(cham1, canvas, 1000, 0);
         grayscale(cham2);
         copytoCanvas(cham2, canvas, 2000, 0);
-        enlarge(cham3, canvas, 0, 0, 0, 1000);
+        enlarge(cham3, canvas, 0, 1000);
         canvas.explore();
     }
    
@@ -77,11 +77,28 @@ public class finalProject
      * Method to copy one picture to another
      * Add two ints to params
      */
-    public static void enlarge(Picture source, Picture target, double sourceX, int targetX, double sourceY, int targetY)
+    public static void enlarge(Picture source, Picture target, int x, int y)
     {
         Pixel sourcePix = null;
         Pixel targetPix = null;
-        if (sourceX==source.getWidth() || sourceY==source.getHeight())
+       
+        //loop through all the columns; targetX is starting point on canvas; sourceX+=2 smaller
+                                                            //source x+=.5 larger, copy every pixel 2x, cast as int in getPixel and setColor
+        for (double sourceX = 250, targetX = x; sourceX < source.getWidth()*3/4; sourceX+=.5, targetX++)
+        {
+            //loop through the rows                                         sourceY += 2, copy every other pixel
+                                                                           // sourceY += .5, copy  other pixel
+            for (double sourceY = 0, targetY = y; sourceY < source.getHeight()/2; sourceY+=.5, targetY++)
+            {
+                sourcePix = source.getPixel((int)sourceX, (int) sourceY);
+                targetPix = target.getPixel( (int)targetX,(int) targetY);
+                targetPix.setColor(sourcePix.getColor());
+            }
+        }
+        /** recursive version
+        Pixel sourcePix = null;
+        Pixel targetPix = null;
+        if (sourceX==3*source.getWidth()/4 || sourceY==3*source.getHeight()/4)
             return;
         else
             {
@@ -90,8 +107,28 @@ public class finalProject
                 targetPix.setColor(sourcePix.getColor());
                 enlarge(source, target, sourceX+=.5,targetX++, sourceY+=.5, targetY++);
             }
+            */
     } 
     
+    public static void sepia(Picture source, int x, int y)
+    {
+        double sred = 1.12;
+        double sgreen = 0.66;
+        double sblue = 0.20;
+        if (x<source.getWidth() && y<source.getHeight())
+        
+        Pixel a = source.getPixel(x,y);
+        int red = a.getRed();
+        int green = a.getGreen();
+        int blue = a.getBlue();
+        int avg = (red+blue+green)/3;
+        red = (int)(avg*sred);
+        green = (int)(avg*sgreen);
+        blue = (int)(avg*sblue);
+        a.setColor(new Color(red,green,blue));
+        sepia(source, x++, y++);
+        
+    }
     /**
      * Method to copy one picture to another
      * Add two ints to params
