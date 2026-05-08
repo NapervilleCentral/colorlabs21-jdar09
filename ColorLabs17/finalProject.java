@@ -25,6 +25,8 @@ public class finalProject
         grayscale(cham2);
         copytoCanvas(cham2, canvas, 2000, 0);
         enlarge(cham3, canvas, 0, 1000);
+        sepia(cham4,0,0);
+        cham4.explore();
         canvas.explore();
     }
    
@@ -112,11 +114,20 @@ public class finalProject
     
     public static void sepia(Picture source, int x, int y)
     {
-        double sred = 1.12;
-        double sgreen = 0.66;
-        double sblue = 0.20;
-        if (x<source.getWidth() && y<source.getHeight())
-        
+        double sred = 0.112;
+        double sgreen = 0.066;
+        double sblue = 0.020;
+       for (double sourceX = 0, targetX = x; sourceX < source.getWidth(); sourceX++, targetX++)
+        {
+            //loop through the rows                                         sourceY += 2, copy every other pixel
+                                                                           // sourceY += .5, copy  other pixel
+            for (double sourceY = 0, targetY = y; sourceY < source.getHeight(); sourceY++, targetY++)
+            {
+                sourcePix = source.getPixel((int)sourceX, (int) sourceY);
+                targetPix = target.getPixel( (int)targetX,(int) targetY);
+                targetPix.setColor(sourcePix.getColor());
+            }
+        }
         Pixel a = source.getPixel(x,y);
         int red = a.getRed();
         int green = a.getGreen();
@@ -127,7 +138,9 @@ public class finalProject
         blue = (int)(avg*sblue);
         a.setColor(new Color(red,green,blue));
         sepia(source, x++, y++);
-        
+        }
+        else
+            return;
     }
     /**
      * Method to copy one picture to another
