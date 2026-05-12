@@ -27,6 +27,7 @@ public class finalProject
         enlarge(cham3, canvas, 0, 1000);
         sepia(cham4,0,0);
         cham4.explore();
+        copytoCanvas(cham4, canvas, 1000,1000);
         canvas.explore();
     }
    
@@ -114,34 +115,37 @@ public class finalProject
     
     public static void sepia(Picture source, int x, int y)
     {
-        double sred = 0.112;
-        double sgreen = 0.066;
-        double sblue = 0.020;
-       for (double sourceX = 0, targetX = x; sourceX < source.getWidth(); sourceX++, targetX++)
+        double sred = 0.88;
+        double sgreen = 0.52;
+        double sblue = 0.16;
+        
+       for (int sourceX =0, targetX = 0; sourceX < source.getWidth(); sourceX++, targetX++)
         {
             //loop through the rows                                         sourceY += 2, copy every other pixel
                                                                            // sourceY += .5, copy  other pixel
-            for (double sourceY = 0, targetY = y; sourceY < source.getHeight(); sourceY++, targetY++)
+            for (int sourceY = 0, targetY = 0; sourceY < source.getHeight(); sourceY++, targetY++)
             {
-                sourcePix = source.getPixel((int)sourceX, (int) sourceY);
-                targetPix = target.getPixel( (int)targetX,(int) targetY);
-                targetPix.setColor(sourcePix.getColor());
+                Pixel a = source.getPixel(sourceX,sourceY);
+                int red = a.getRed();
+            int green = a.getGreen();
+            int blue = a.getBlue();
+            int avg = (red+blue+green)/3;
+            red = (int)(avg*sred);
+            //System.out.println(a + "--" + green + "?" + avg);
+            
+            green = (int)(avg*sgreen);
+            
+            blue = (int)(avg*sblue);
+           
+            a.setColor(new Color(red,green,blue));
+            
+    
             }
         }
-        Pixel a = source.getPixel(x,y);
-        int red = a.getRed();
-        int green = a.getGreen();
-        int blue = a.getBlue();
-        int avg = (red+blue+green)/3;
-        red = (int)(avg*sred);
-        green = (int)(avg*sgreen);
-        blue = (int)(avg*sblue);
-        a.setColor(new Color(red,green,blue));
-        sepia(source, x++, y++);
+        
         }
-        else
-            return;
-    }
+       
+    
     /**
      * Method to copy one picture to another
      * Add two ints to params
