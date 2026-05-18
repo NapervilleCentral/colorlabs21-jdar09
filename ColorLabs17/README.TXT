@@ -11,6 +11,8 @@ HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
 
-1) Person 1 -- Nithela, increase depth bc your face is blending in
-2) Person 2 -- Mr. Hayes, increase yellow's range so more variety is on your face
-3) Person 3 -- Kaylie, switch blue to a color that matches your palette more and reduce the brightness of the yellow.
+I started with an image of a Jellycat chameleon and then mirrored it vertically, made it
+grayscale, enlarged it, sepia-ized it, and used recursion to scale the photo. The two color
+based modifications were grayscale and sepia, and my two scale based modifications were
+enlargement and continued to scale the photo. 
+I 

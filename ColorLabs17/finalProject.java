@@ -18,6 +18,7 @@ public class finalProject
         Picture cham2 = new Picture("images/ogchame.png");
         Picture cham3 = new Picture("images/ogchame.png");
         Picture cham4 = new Picture("images/ogchame.png");
+        Picture cham5 = new Picture("images/ogchame.png");
         copytoCanvas(chamog, canvas, 0, 0);
         mirrorVertical(cham1);
         cham1.explore();
@@ -28,7 +29,9 @@ public class finalProject
         sepia(cham4,0,0);
         cham4.explore();
         copytoCanvas(cham4, canvas, 1000,1000);
+        recursive(cham5, canvas, 2000, 1000, 1);
         canvas.explore();
+        canvas.write("images/poster.png");
     }
    
     //grayscale
@@ -145,7 +148,30 @@ public class finalProject
         
         }
        
-    
+    public static void recursive(Picture source, Picture target, int x, int y, int n)
+    {
+        Pixel sourcePix = null;
+        Pixel targetPix = null;
+       
+        if (n>20)
+            return;
+        else
+        {//loop through all the columns; targetX is starting point on canvas; sourceX+=2 smaller
+                                                            //source x+=.5 larger, copy every pixel 2x, cast as int in getPixel and setColor
+        for (double sourceX = 0, targetX = x; sourceX < source.getWidth(); sourceX+=n, targetX++)
+        {
+            //loop through the rows                                         sourceY += 2, copy every other pixel
+                                                                           // sourceY += .5, copy  other pixel
+            for (double sourceY = 0, targetY = y; sourceY < source.getHeight(); sourceY+=n, targetY++)
+            {
+                sourcePix = source.getPixel((int)sourceX, (int) sourceY);
+                targetPix = target.getPixel( (int)targetX,(int) targetY);
+                targetPix.setColor(sourcePix.getColor());
+            }
+        }
+        recursive(source, target, x, y, n*2);
+            }
+    }
     /**
      * Method to copy one picture to another
      * Add two ints to params
